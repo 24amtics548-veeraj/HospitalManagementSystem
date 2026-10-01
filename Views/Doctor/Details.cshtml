@@ -1,0 +1,22 @@
+@model HospitalManagementSystem.Models.Doctor
+
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+
+<h2 class="my-3">Doctor Details</h2>
+
+<div class="card col-md-6">
+    <div class="card-body">
+        <h4 class="card-title">@Model.DoctorName</h4>
+        <p class="card-text"><strong>Specialization:</strong> @Model.Specialization</p>
+        <p class="card-text"><strong>Experience:</strong> @Model.Experience years</p>
+        <p class="card-text"><strong>Consultation Fee:</strong> ₹@Model.ConsultationFee</p>
+        <!-- Calculate total charge using extension method[cite: 1] -->
+        <p class="card-text text-success"><strong>Total Payable Charge:</strong> ₹@Model.CalculateTotalCharge()</p>
+        
+        <!-- Redirect to appointment form passing DoctorId[cite: 1] -->
+        <a asp-action="BookAppointment" asp-route-doctorId="@Model.DoctorId" class="btn btn-primary">Book Appointment</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

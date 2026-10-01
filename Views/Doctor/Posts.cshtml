@@ -1,0 +1,38 @@
+@model IEnumerable<HospitalManagementSystem.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts List";
+}
+
+<h2 class="my-3">External Posts Data (Async Fetch)</h2>
+
+<!-- Display patient name stored inside Cookie if available[cite: 1] -->
+@if (ViewBag.PatientName != null)
+{
+    <div class="alert alert-info">
+        Welcome back, <strong>@ViewBag.PatientName</strong>! (Retrieved from Cookie)[cite: 1]
+    </div>
+}
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Post ID</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var post in Model.Take(15))
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.Title</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-primary">Back to Doctors List</a>

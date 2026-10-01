@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+<h2 class="my-3">Appointment Booking Form</h2>
+
+<!-- Display stored Session data[cite: 1] -->
+<p class="text-info"><strong>Selected Specialization (From Session):</strong> @ViewBag.SelectedSpecialization</p>
+
+<form asp-action="BookAppointment" method="post" class="col-md-6">
+    
+    <!-- Hidden Field used to submit DoctorId along with the form[cite: 1] -->
+    <input type="hidden" name="doctorId" value="@ViewBag.DoctorId" />
+
+    <div class="form-group mb-3">
+        <label for="patientName" class="form-label">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Appointment</button>
+</form>
